@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Video to Audio Downloader</title>
+</head>
+<body>
+
+  <h1>YouTube Video to Audio Downloader</h1>
+
+  <label for="videoUrl">Enter YouTube Video URL:</label>
+  <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
+
+  <label for="audioFormat">Select Audio Format:</label>
+  <select id="audioFormat">
+    <option value="highestaudio">Highest Quality</option>
+    <option value="140">AAC (128 kbps)</option>
+    <option value="139">AAC (48 kbps)</option>
+    <option value="251">Opus (160 kbps)</option>
+    <!-- Add more options as needed -->
+  </select>
+
+  <button onclick="downloadAudio()">Download Audio</button>
+
+  <script>
+    function downloadAudio() {
+      const videoUrl = document.getElementById('videoUrl').value;
+      const audioFormat = document.getElementById('audioFormat').value;
+
+      if (!videoUrl.trim()) {
+        alert('Please enter a valid YouTube video URL.');
+        return;
+      }
+
+      const downloadUrl = `/download?videoUrl=${encodeURIComponent(videoUrl)}&audioFormat=${encodeURIComponent(audioFormat)}`;
+      window.location.href = downloadUrl;
+    }
+  </script>
+
+</body>
+</html>
